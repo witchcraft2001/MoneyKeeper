@@ -1,7 +1,9 @@
 package ru.dm_dev.moneykeeper.views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +11,9 @@ import android.view.ViewGroup;
 
 import ru.dm_dev.moneykeeper.R;
 
-public class OperationsFragment extends Fragment implements IOperationsView {
+public class OperationsFragment extends Fragment implements IOperationsView, View.OnClickListener {
 
+    View rootView;
     public static OperationsFragment instance;
 
     public OperationsFragment() {
@@ -33,7 +36,12 @@ public class OperationsFragment extends Fragment implements IOperationsView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_operations, container, false);
+        rootView = inflater.inflate(R.layout.fragment_operations, container, false);
+
+        FloatingActionButton fab = (FloatingActionButton)rootView.findViewById(R.id.fab);
+        fab.setOnClickListener(this);
+
+        return rootView;
     }
 
     @Override
@@ -54,5 +62,12 @@ public class OperationsFragment extends Fragment implements IOperationsView {
     @Override
     public void hideLoader() {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(getContext(), EditOperationActivity.class);
+        intent.putExtra("Id", 0L);
+        startActivity(intent);
     }
 }

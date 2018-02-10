@@ -21,4 +21,6 @@
     <string name="text_about_iconset">Иконки:</string>
     <string name="text_about_author">Михальченков Дмитрий\nmikhaltchenkov@gmail.com</string>
     <string name="text_about_icons_authors">Pixel Buddha (nfo@pixelbuddha.net)\n https://materialdesignicons.com</string>
+    <string name="text_action_delete">Удалить</string>
+    <string name="text_action_save">Сохранить</string>
 </resources>

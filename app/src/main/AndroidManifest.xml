@@ -15,24 +15,18 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".views.AboutActivity"
-            android:label="@string/title_activity_about"
-            android:parentActivityName=".views.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/title_activity_about">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.dm_dev.moneykeeper.views.MainActivity" />
         </activity>
         <activity
-            android:name=".EditOperationActivity"
-            android:label="@string/title_activity_edit_operation"
-            android:parentActivityName=".views.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".views.EditOperationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.dm_dev.moneykeeper.views.MainActivity" />
