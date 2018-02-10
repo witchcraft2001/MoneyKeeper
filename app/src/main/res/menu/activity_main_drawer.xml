@@ -8,10 +8,21 @@
             android:id="@+id/nav_operations"
             android:icon="@drawable/ic_menu_swap_vertical"
             android:title="@string/text_menu_operations" />
+
         <item
             android:id="@+id/nav_wallets"
             android:icon="@drawable/ic_menu_wallet"
             android:title="@string/text_menu_wallets" />
+
+        <item
+            android:id="@+id/nav_categories"
+            android:icon="@drawable/ic_menu_categories"
+            android:title="@string/text_menu_categories" />
+
+        <item
+            android:id="@+id/nav_products"
+            android:icon="@drawable/ic_menu_products"
+            android:title="@string/text_menu_products" />
 
         <item
             android:id="@+id/nav_settings"
