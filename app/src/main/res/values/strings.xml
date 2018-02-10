@@ -17,4 +17,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_menu_categories">Категории</string>
     <string name="text_menu_products">Товары</string>
+    <string name="title_activity_edit_operation">EditOperationActivity</string>
+    <string name="text_about_iconset">Иконки:</string>
+    <string name="text_about_author">Михальченков Дмитрий\nmikhaltchenkov@gmail.com</string>
+    <string name="text_about_icons_authors">Pixel Buddha (nfo@pixelbuddha.net)\n https://materialdesignicons.com</string>
 </resources>

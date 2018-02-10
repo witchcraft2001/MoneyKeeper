@@ -28,6 +28,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.dm_dev.moneykeeper.views.MainActivity" />
         </activity>
+        <activity
+            android:name=".EditOperationActivity"
+            android:label="@string/title_activity_edit_operation"
+            android:parentActivityName=".views.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.dm_dev.moneykeeper.views.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
