@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 
 import ru.dm_dev.moneykeeper.models.DaoMaster;
+import ru.dm_dev.moneykeeper.models.WalletTypeDao;
 
 public class DatabaseUpgradeHelper extends DaoMaster.OpenHelper {
     public DatabaseUpgradeHelper(Context context, String name) {
