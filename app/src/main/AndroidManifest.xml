@@ -16,6 +16,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,8 +27,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.dm_dev.moneykeeper.views.MainActivity" />
         </activity>
+        <activity android:name=".views.EditOperationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.dm_dev.moneykeeper.views.MainActivity" />
+        </activity>
         <activity
-            android:name=".views.EditOperationActivity">
+            android:name=".views.EditWalletActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.dm_dev.moneykeeper.views.MainActivity" />

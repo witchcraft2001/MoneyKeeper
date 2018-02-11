@@ -1,7 +1,9 @@
 package ru.dm_dev.moneykeeper.views;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +11,9 @@ import android.view.ViewGroup;
 
 import ru.dm_dev.moneykeeper.R;
 
-public class WalletsFragment extends Fragment implements IWalletsView {
+public class WalletsFragment extends Fragment implements IWalletsView, View.OnClickListener {
 
+    View rootView;
     public static WalletsFragment instance;
 
     public WalletsFragment() {
@@ -33,7 +36,11 @@ public class WalletsFragment extends Fragment implements IWalletsView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wallets, container, false);
+        rootView = inflater.inflate(R.layout.fragment_wallets, container, false);
+        FloatingActionButton fab = (FloatingActionButton)rootView.findViewById(R.id.fab);
+        fab.setOnClickListener(this);
+
+        return rootView;
     }
 
     @Override
@@ -54,5 +61,12 @@ public class WalletsFragment extends Fragment implements IWalletsView {
     @Override
     public void hideLoader() {
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(getContext(), EditWalletActivity.class);
+        intent.putExtra("Id", 0L);
+        startActivity(intent);
     }
 }
