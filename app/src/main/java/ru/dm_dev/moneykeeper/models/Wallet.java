@@ -2,10 +2,13 @@ package ru.dm_dev.moneykeeper.models;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.ToOne;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
+
+import java.util.UUID;
 
 @Entity
 public class Wallet {
@@ -48,8 +51,17 @@ public class Wallet {
         this.balance = balance;
     }
 
-    @Generated(hash = 1197745249)
+    @Keep
     public Wallet() {
+        this.uuid = UUID.randomUUID().toString();
+    }
+
+    public Wallet(@NotNull String name, long walletTypeId, long currencyId, double balance) {
+        this();
+        this.name = name;
+        this.walletTypeId = walletTypeId;
+        this.currencyId = currencyId;
+        this.balance = balance;
     }
 
     public Long getId() {
