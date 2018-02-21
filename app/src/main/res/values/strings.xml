@@ -24,4 +24,8 @@
     <string name="text_action_delete">Удалить</string>
     <string name="text_action_save">Сохранить</string>
     <string name="title_activity_edit_wallet">EditWalletActivity</string>
+    <string name="text_currency_name">Валюта</string>
+    <string name="text_wallet_type">Тип кошелька</string>
+    <string name="text_wallet_name">Название</string>
+    <string name="text_balance_label">Баланс</string>
 </resources>

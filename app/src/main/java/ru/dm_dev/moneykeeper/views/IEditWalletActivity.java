@@ -18,9 +18,10 @@ public interface IEditWalletActivity {
     void setSelectedPositionWalletType(int position);
     long getSelectedWalletTypeId();
     void setSelectedPositionCurrency(int position);
-    long getSelectedCurrency();
+    long getSelectedCurrencyId();
     void setBalance(String balance);
     String getBalance();
     void setSymbol(String symbol);
     Application getApplication();
+    void finish();
 }

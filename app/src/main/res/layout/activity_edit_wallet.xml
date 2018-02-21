@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Название"/>
+        android:text="@string/text_wallet_name"/>
 
     <EditText
         android:id="@+id/edit_wallet_name"
@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Тип кошелька"/>
+        android:text="@string/text_wallet_type"/>
 
     <Spinner
         android:id="@+id/spinner_wallet_type"
@@ -31,7 +31,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Валюта"/>
+        android:text="@string/text_currency_name"/>
 
     <Spinner
         android:id="@+id/spinner_currency"
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Баланс"/>
+        android:text="@string/text_balance_label"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +53,8 @@
             android:id="@+id/edit_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="8"/>
+            android:layout_weight="8"
+            android:inputType="numberSigned"/>
 
         <TextView
             android:id="@+id/text_view_currency_symbol"

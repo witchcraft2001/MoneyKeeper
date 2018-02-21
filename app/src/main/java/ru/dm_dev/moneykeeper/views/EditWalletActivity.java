@@ -1,5 +1,6 @@
 package ru.dm_dev.moneykeeper.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -7,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,7 +25,7 @@ import ru.dm_dev.moneykeeper.models.WalletType;
 import ru.dm_dev.moneykeeper.presenters.EditWalletPresenterImpl;
 import ru.dm_dev.moneykeeper.presenters.IEditWalletPresenter;
 
-public class EditWalletActivity extends AppCompatActivity implements IEditWalletActivity {
+public class EditWalletActivity extends AppCompatActivity implements IEditWalletActivity, AdapterView.OnItemSelectedListener {
 
     private static final String LOG_TAG = "EditWalletActivity";
     private EditText nameEdit;
@@ -31,7 +34,7 @@ public class EditWalletActivity extends AppCompatActivity implements IEditWallet
     private Spinner currencySpinner;
     private TextView symbolText;
     private IEditWalletPresenter presenter;
-
+    private long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +44,12 @@ public class EditWalletActivity extends AppCompatActivity implements IEditWallet
         balanceEdit = (EditText)findViewById(R.id.edit_balance);
         walletTypeSpinner = (Spinner)findViewById(R.id.spinner_wallet_type);
         currencySpinner = (Spinner)findViewById(R.id.spinner_currency);
+        currencySpinner.setOnItemSelectedListener(this);
         symbolText = (TextView)findViewById(R.id.text_view_currency_symbol);
         presenter = new EditWalletPresenterImpl(this);
-        presenter.init(0);
+        Intent intent = getIntent();
+        id = intent.getLongExtra("Id", 0);
+        presenter.init(id);
     }
 
     @Override
@@ -51,6 +57,25 @@ public class EditWalletActivity extends AppCompatActivity implements IEditWallet
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity_edit_operation, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        boolean found = false;
+
+        switch (id){
+            case R.id.action_save:
+                presenter.onSave();
+                found = true;
+                break;
+        }
+
+        if (found) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -111,7 +136,7 @@ public class EditWalletActivity extends AppCompatActivity implements IEditWallet
     }
 
     @Override
-    public long getSelectedCurrency() {
+    public long getSelectedCurrencyId() {
         return currencySpinner.getSelectedItemId();
     }
 
@@ -128,5 +153,18 @@ public class EditWalletActivity extends AppCompatActivity implements IEditWallet
     @Override
     public void setSymbol(String symbol) {
         symbolText.setText(symbol);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        switch (adapterView.getId()) {
+            case R.id.spinner_currency:
+                presenter.onSelectCurrency(id);
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
     }
 }
