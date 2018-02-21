@@ -31,6 +31,13 @@ public class Currency {
     public Currency() {
     }
 
+    public Currency(String codeStr, int codeInt, String name, String symbol) {
+        this.codeStr = codeStr;
+        this.codeInt = codeInt;
+        this.name = name;
+        this.symbol = symbol;
+    }
+
     public Long getId() {
         return this.id;
     }

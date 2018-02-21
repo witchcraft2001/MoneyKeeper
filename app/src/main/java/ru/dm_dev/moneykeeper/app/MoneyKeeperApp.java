@@ -10,6 +10,8 @@ import org.greenrobot.greendao.query.QueryBuilder;
 import java.util.List;
 
 import ru.dm_dev.moneykeeper.helpers.DatabaseUpgradeHelper;
+import ru.dm_dev.moneykeeper.models.Currency;
+import ru.dm_dev.moneykeeper.models.CurrencyDao;
 import ru.dm_dev.moneykeeper.models.DaoMaster;
 import ru.dm_dev.moneykeeper.models.DaoSession;
 import ru.dm_dev.moneykeeper.models.WalletType;
@@ -43,40 +45,60 @@ public class MoneyKeeperApp extends Application {
     }
 
     private void checkWalletTypes() {
-        WalletTypeDao wDao = daoSession.getWalletTypeDao();
         Log.d(LOG_TAG, "Init the WalletType entities ...");
         WalletType walletType;
         if (!getWalletTypeByName("VISA")) {
             walletType = new WalletType("VISA");
-            wDao.insert(walletType);
+            daoSession.getWalletTypeDao().insert(walletType);
         }
         if (!getWalletTypeByName("MasterCard")) {
             walletType = new WalletType("MasterCard");
-            wDao.insert(walletType);
+            daoSession.getWalletTypeDao().insert(walletType);
         }
         if (!getWalletTypeByName("МИР")) {
             walletType = new WalletType("МИР");
-            wDao.insert(walletType);
+            daoSession.getWalletTypeDao().insert(walletType);
         }
         if (!getWalletTypeByName("WebMoney")) {
             walletType = new WalletType("WebMoney");
-            wDao.insert(walletType);
+            daoSession.getWalletTypeDao().insert(walletType);
         }
         if (!getWalletTypeByName("ЯндексДеньги")) {
             walletType = new WalletType("ЯндексДеньги");
-            wDao.insert(walletType);
+            daoSession.getWalletTypeDao().insert(walletType);
         }
         if (!getWalletTypeByName("Прочие")) {
             walletType = new WalletType("Прочие");
-            wDao.insert(walletType);
+            daoSession.getWalletTypeDao().insert(walletType);
+        }
+
+        Currency currency;
+        if (!getCurrencyByCode("RUR")) {
+            currency = new Currency("RUR", 643, "Российский рубль", "руб.");
+            daoSession.getCurrencyDao().insert(currency);
+        }
+        if (!getCurrencyByCode("UAH")) {
+            currency = new Currency("UAH", 980, "Гривна", "грн.");
+            daoSession.getCurrencyDao().insert(currency);
+        }
+        if (!getCurrencyByCode("USD")) {
+            currency = new Currency("USD", 840, "Доллар США", "$");
+            daoSession.getCurrencyDao().insert(currency);
+        }
+        if (!getCurrencyByCode("EUR")) {
+            currency = new Currency("EUR", 978, "Евро", "Евро");
+            daoSession.getCurrencyDao().insert(currency);
         }
         Log.d(LOG_TAG, "WalletTypes initialized.");
     }
 
     private boolean getWalletTypeByName(String name) {
-        WalletTypeDao wDao = daoSession.getWalletTypeDao();
         QueryBuilder<WalletType> builder = daoSession.getWalletTypeDao().queryBuilder().where(WalletTypeDao.Properties.Name.eq(name));
         return builder.limit(1).unique() != null;
+    }
 
+    private boolean getCurrencyByCode(String code) {
+        QueryBuilder<Currency> builder = daoSession.getCurrencyDao().queryBuilder().where(CurrencyDao.Properties.CodeStr.eq(code));
+        return builder.limit(1).unique() != null;
     }
 }

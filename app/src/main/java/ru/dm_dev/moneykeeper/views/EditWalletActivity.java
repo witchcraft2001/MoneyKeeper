@@ -15,7 +15,9 @@ import android.widget.TextView;
 import java.util.List;
 
 import ru.dm_dev.moneykeeper.R;
+import ru.dm_dev.moneykeeper.common.CurrencySpinAdapter;
 import ru.dm_dev.moneykeeper.common.WalletTypeSpinAdapter;
+import ru.dm_dev.moneykeeper.models.Currency;
 import ru.dm_dev.moneykeeper.models.WalletType;
 import ru.dm_dev.moneykeeper.presenters.EditWalletPresenterImpl;
 import ru.dm_dev.moneykeeper.presenters.IEditWalletPresenter;
@@ -80,6 +82,17 @@ public class EditWalletActivity extends AppCompatActivity implements IEditWallet
         WalletTypeSpinAdapter adapter = new WalletTypeSpinAdapter(this, R.layout.support_simple_spinner_dropdown_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         walletTypeSpinner.setAdapter(adapter);
+    }
+
+    @Override
+    public void setCurrencyListAdapter(List<Currency> list) {
+        Log.d(LOG_TAG, "setCurrencyListAdapter");
+        if (list != null) {
+            Log.d(LOG_TAG, "Items count = " + list.size());
+        }
+        CurrencySpinAdapter adapter = new CurrencySpinAdapter(this, R.layout.support_simple_spinner_dropdown_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        currencySpinner.setAdapter(adapter);
     }
 
     @Override

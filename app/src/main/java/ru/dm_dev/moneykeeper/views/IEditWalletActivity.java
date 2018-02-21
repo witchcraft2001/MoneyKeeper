@@ -5,6 +5,7 @@ import android.app.Application;
 import java.util.List;
 
 import ru.dm_dev.moneykeeper.app.MoneyKeeperApp;
+import ru.dm_dev.moneykeeper.models.Currency;
 import ru.dm_dev.moneykeeper.models.WalletType;
 
 public interface IEditWalletActivity {
@@ -13,6 +14,7 @@ public interface IEditWalletActivity {
     void setName(String name);
     String getName();
     void setWalletTypeListAdapter(List<WalletType> list);
+    void setCurrencyListAdapter(List<Currency> list);
     void setSelectedPositionWalletType(int position);
     long getSelectedWalletTypeId();
     void setSelectedPositionCurrency(int position);
