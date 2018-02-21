@@ -5,21 +5,31 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.List;
+
 import ru.dm_dev.moneykeeper.R;
+import ru.dm_dev.moneykeeper.common.WalletTypeSpinAdapter;
+import ru.dm_dev.moneykeeper.models.WalletType;
+import ru.dm_dev.moneykeeper.presenters.EditWalletPresenterImpl;
+import ru.dm_dev.moneykeeper.presenters.IEditWalletPresenter;
 
 public class EditWalletActivity extends AppCompatActivity implements IEditWalletActivity {
 
+    private static final String LOG_TAG = "EditWalletActivity";
     private EditText nameEdit;
     private EditText balanceEdit;
     private Spinner walletTypeSpinner;
     private Spinner currencySpinner;
     private TextView symbolText;
+    private IEditWalletPresenter presenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +40,8 @@ public class EditWalletActivity extends AppCompatActivity implements IEditWallet
         walletTypeSpinner = (Spinner)findViewById(R.id.spinner_wallet_type);
         currencySpinner = (Spinner)findViewById(R.id.spinner_currency);
         symbolText = (TextView)findViewById(R.id.text_view_currency_symbol);
+        presenter = new EditWalletPresenterImpl(this);
+        presenter.init(0);
     }
 
     @Override
@@ -57,6 +69,17 @@ public class EditWalletActivity extends AppCompatActivity implements IEditWallet
     @Override
     public String getName() {
         return nameEdit.getText().toString();
+    }
+
+    @Override
+    public void setWalletTypeListAdapter(List<WalletType> list) {
+        Log.d(LOG_TAG, "setWalletTypeListAdapter");
+        if (list != null) {
+            Log.d(LOG_TAG, "Items count = " + list.size());
+        }
+        WalletTypeSpinAdapter adapter = new WalletTypeSpinAdapter(this, R.layout.support_simple_spinner_dropdown_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        walletTypeSpinner.setAdapter(adapter);
     }
 
     @Override

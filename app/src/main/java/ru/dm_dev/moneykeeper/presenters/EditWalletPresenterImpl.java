@@ -18,11 +18,15 @@ public class EditWalletPresenterImpl implements IEditWalletPresenter {
     IEditWalletActivity view;
     long id;
 
-    @Override
-    public void init(IEditWalletActivity view, long id) {
-        this.id = id;
+    public EditWalletPresenterImpl(IEditWalletActivity view) {
         this.view = view;
+    }
+
+    @Override
+    public void init(long id) {
+        this.id = id;
         daoSession = ((MoneyKeeperApp) view.getApplication()).getDaoSession();
+        new GetWalletTypes().execute();
     }
 
     private class GetWalletTypes extends AsyncTask<Void, Void, List<WalletType>> {
