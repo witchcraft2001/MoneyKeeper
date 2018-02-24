@@ -6,10 +6,15 @@
     tools:context="ru.dm_dev.moneykeeper.views.WalletsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Wallets" />
+        android:layout_height="wrap_content"
+        >
+
+    </android.support.v7.widget.RecyclerView>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
