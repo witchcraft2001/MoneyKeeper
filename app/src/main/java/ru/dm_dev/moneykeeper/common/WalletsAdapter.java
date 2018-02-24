@@ -1,7 +1,5 @@
 package ru.dm_dev.moneykeeper.common;
 
-import android.app.Activity;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +12,10 @@ import java.util.List;
 import ru.dm_dev.moneykeeper.R;
 import ru.dm_dev.moneykeeper.models.Wallet;
 
-public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder>{
+public class WalletsAdapter extends RecyclerView.Adapter<WalletsAdapter.ViewHolder>{
     private List<Wallet> list;
-    private LayoutInflater layoutInflater;
 
-    public WalletAdapter(List<Wallet> list)
+    public WalletsAdapter(List<Wallet> list)
     {
         this.list = list;
     }
@@ -31,7 +28,7 @@ public class WalletAdapter extends RecyclerView.Adapter<WalletAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(WalletAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(WalletsAdapter.ViewHolder holder, int position) {
         holder.nameText.setText(list.get(position).getName());
         holder.setRowID(list.get(position).getId());
     }

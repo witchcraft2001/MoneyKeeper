@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import ru.dm_dev.moneykeeper.R;
-import ru.dm_dev.moneykeeper.common.WalletAdapter;
+import ru.dm_dev.moneykeeper.common.WalletsAdapter;
 import ru.dm_dev.moneykeeper.models.Wallet;
 import ru.dm_dev.moneykeeper.presenters.IWalletsPresenter;
 import ru.dm_dev.moneykeeper.presenters.WalletsPresenterImpl;
@@ -25,7 +25,7 @@ public class WalletsFragment extends Fragment implements IWalletsView, View.OnCl
     View rootView;
     public static WalletsFragment instance;
     private RecyclerView recyclerView;
-    private WalletAdapter listAdapter;
+    private WalletsAdapter listAdapter;
     private IWalletsPresenter presenter;
 
     public WalletsFragment() {
@@ -59,7 +59,7 @@ public class WalletsFragment extends Fragment implements IWalletsView, View.OnCl
                 new LinearLayoutManager(getActivity().getBaseContext()));
 
 
-        listAdapter = new WalletAdapter(null);
+        listAdapter = new WalletsAdapter(null);
         recyclerView.setAdapter(listAdapter);
 
         // attach a custom ItemDecorator to draw dividers between list items
